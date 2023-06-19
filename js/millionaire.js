@@ -17,7 +17,6 @@ Number.prototype.money = function(fixed, decimalDelim, breakDelim){
 		 breakDelim : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + breakDelim) +
 		  (fixed ? decimalDelim + Math.abs(n - i).toFixed(fixed).slice(2) : "");
 }
-
 /**
 *
 * @require
@@ -30,91 +29,34 @@ startSound = function(id, loop) {
 		soundHandle.setAttribute('loop', loop);
 	soundHandle.play();
 }
-
 /**
 * 
 * @param data 
 */
 var MillionaireModel = function(data) {
 	var self = this;
-
-
     this.questions = data.questions;
-
-
     this.transitioning = false;
-
-
  	this.money = new ko.observable(0);
-
-
  	this.level = new ko.observable(1);
-
-
  	this.usedFifty = new ko.observable(false);
  	this.usedPhone = new ko.observable(false);
  	this.usedAudience = new ko.observable(false);
-
-
  	self.getQuestionText = function() {
  		return self.questions[self.level() - 1].question;
  	}
-
-
  	self.getAnswerText = function(index) {
  		return self.questions[self.level() - 1].content[index];
  	}
-
-
-
-
-
- 	// self.random = function(item, event) {
-	// 	if(self.transitioning)
-	// 		return;
-	// 	$(event.target).fadeOut('slow');
-	// 	var correct = this.questions[self.level() - 1].correct;
-	// 	var first = (correct + 1) % 4;
-	// 	var second = (first + 1) % 4;
-	// 	if(first == 0 || second == 0) {
-	// 		$("#answer-one").fadeOut('slow');
-	// 	}
-	// 	if(first == 1 || second == 1) {
-	// 		$("#answer-two").fadeOut('slow');
-	// 	}
-	// 	if(first == 2 || second == 2) {
-	// 		$("#answer-three").fadeOut('slow');
-	// 	}
-	// 	if(first == 3 || second == 3) {
-	// 		$("#answer-four").fadeOut('slow');
-	// 	}
-	// }
-
-
-	 var inputLabel = document.getElementsByTagName('label');
-	 Math.rand = function(min, max){
-		return Math.round(Math.random() * (max-min) + min);
-	}
-	
-	 $('.round').click(function(){
-		
-		$(inputLabel[Math.floor(Math.random() * 4)]).css('color', '#F90');
-		$(this).off('click');
-		$(this).css('background', 'red');
-})
-
-
-
-
-
-
  	self.fifty = function(item, event) {
  		if(self.transitioning)
  			return;
  		$(event.target).fadeOut('slow');
  		var correct = this.questions[self.level() - 1].correct;
+
  		var first = (correct + 1) % 4;
  		var second = (first + 1) % 4;
+		
  		if(first == 0 || second == 0) {
  			$("#answer-one").fadeOut('slow');
  		}
@@ -128,15 +70,34 @@ var MillionaireModel = function(data) {
  			$("#answer-four").fadeOut('slow');
  		}
  	}
-
-
  	self.fadeOutOption = function(item, event) {
- 		if(self.transitioning)
- 			return;
- 		$(event.target).fadeOut('slow');
- 	}
-
-
+		if(self.transitioning)
+			 return;
+		let array_aswer=[
+			'#answer-one',
+			'#answer-two',
+			'#answer-three',
+			'#answer-four'
+		];
+		let rand = random(0,3);
+		let test = $(array_aswer[rand]);
+		test.css('background','red');
+	
+		$(event.target).fadeOut({
+			duration: 1600, 
+			complete: function() {
+				if(self.level() + 1) {					
+					test.css('background', 'none');
+				} else {
+					test.css('background','red');
+					self.transitioning = false;
+				}
+			}
+		});
+	}
+		function random(min, max) {
+			return Math.round(min + Math.random() * (max - min));
+		}
  	self.answerQuestion = function(index, elm) {
  		if(self.transitioning)
  			return;
@@ -147,8 +108,6 @@ var MillionaireModel = function(data) {
  			self.wrongAnswer(elm);
  		}
  	}
-
-
  	self.rightAnswer = function(elm) {
  		$("#" + elm).slideUp('slow', function() {
  			startSound('rightsound', false);
@@ -171,8 +130,6 @@ var MillionaireModel = function(data) {
  			});
  		});
  	}
-
-
  	self.wrongAnswer = function(elm) {
  		$("#" + elm).slideUp('slow', function() {
  			startSound('wrongsound', false);
@@ -187,14 +144,10 @@ var MillionaireModel = function(data) {
  			});
  		});
  	}
-
-
  	self.formatMoney = function() {
 	    return self.money().money(2, '.', ',');
 	}
 };
-
-
 $(document).ready(function() {
 	$.getJSON("questions.json", function(data) {
 		//var rand = Math.floor(Math.random() * data.games.length)

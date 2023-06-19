@@ -27,43 +27,32 @@ button:hover {
 	background-color: var(--c);
 	color: #fff;
   }
-
-
-
 .buton{
 	font-size: 1.2em;
 }
 .baton{
 	width: 40%;
 	left: 30%;
-	font-size: 1.5em;
 }
-
-  
 body {
 	background: black;
-	font-family: 'Times New Roman', Times, serif;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
 	margin: 0;
 }
-
 audio {
 	display: none;
 }
-
 .clear {
 	clear: both;
 }
-
 #game {
 	display: none;
 	text-align: center;
 }
-
 #top {
 	width: 960px;
 	margin: 0 auto;
 }
-
 #levels {
 	float: right;
 	list-style: none;
@@ -74,19 +63,16 @@ audio {
 	margin-top: 40px;
 	font-size: 1.3em;
 }
-
 .active {
 	color: green;
 	font-weight: bold;
 	text-decoration: underline;
 }
-
 #options {
 	width: 960px;
 	height: 70px;
 	margin: 0 auto;
 }
-
 #question-box {
 	background: #ddd;
 	width: 960px;
@@ -94,13 +80,11 @@ audio {
 	padding: 10px;
 	font-size: 1.5em;
 }
-
 .big-text {
 	color: #FF7E00;
 	font-size: 2em;
 	margin-right: 15px;
 }
-
 #money {
 	font-size: 1.9em;
 	font-weight: bold;
@@ -110,14 +94,12 @@ audio {
 	height: 50px;
 	padding-top: 20px;
 }
-
 #logo {
 	width: 380px;
 	float: left;
 	margin-left: 30%;
 	margin-top: 40px;
 }
-
 #game-over {
 	display: none;
 	font-size: 2em;
@@ -128,15 +110,12 @@ audio {
 	margin: 0 auto;
 	text-align: center;
 }
-
 #fifty {
 	background: url('../img/50-50.png') no-repeat 0 0;
 }
-
 #phone-friend {
 	background: url('../img/phone-friend.png') no-repeat 0 0;
 }
-
 #audience {
 	background: url('../img/audience.png') no-repeat 0 0;
 }
@@ -148,17 +127,14 @@ audio {
 	width: 960px;
 	margin: 0 auto;
 }
-
 #pre-start {
 	display: none;
 	color: white;
 }
-
 .answer:hover {
 	text-decoration: underline;
 	cursor: pointer;
 }
-
 .options-button {
 	width: 64px;
 	height: 64px;
@@ -167,7 +143,6 @@ audio {
 	background-position: 0 0;
 	cursor: pointer;
 }
-
 .options-button:hover {
 	background-position: 0 -64px !important;
 }
@@ -179,7 +154,6 @@ audio {
 	background-position: 0 0;
 	cursor: pointer;
 }
-
 .round-style:hover {
 	background-position: 0 -64px !important;
 }
@@ -198,7 +172,6 @@ audio {
 	top:  44%;
 	left: 32%;
   }
-  
   .box:hover::before {
 	color: rgba(255, 255, 255, 0.6);
 	background-color: rgba(255, 255, 255, 0.2);
