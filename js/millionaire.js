@@ -81,7 +81,7 @@ var MillionaireModel = function(data) {
 		];
 		let rand = random(0,3);
 		let test = $(array_aswer[rand]);
-		test.css('background','red');
+		test.css('background','orange');
 	
 		$(event.target).fadeOut({
 			duration: 1600, 
