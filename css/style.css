@@ -84,6 +84,8 @@ audio {
 	color: #FF7E00;
 	font-size: 2em;
 	margin-right: 15px;
+	width: 30px;
+	display: inline-block;
 }
 #money {
 	font-size: 1.9em;
